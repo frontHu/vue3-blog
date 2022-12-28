@@ -1,0 +1,2 @@
+
+export const SET_IS_MENU_VISIBLE = 'SET_IS_MENU_VISIBLE'
