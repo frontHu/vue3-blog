@@ -77,7 +77,3 @@
 .animated.slower {
   animation-duration: 3s;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
