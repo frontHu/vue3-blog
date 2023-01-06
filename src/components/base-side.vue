@@ -1,5 +1,6 @@
 <template>
   <section class="base-side" :class="{ 'is-visible': isVisible }">
+    <!-- 信息 -->
     <div class="info zpw-flex zpw-flex-col zpw-items-center zpw-px-1 zpw-py-2">
       <h1 class="name zpw-text-white zpw-mb-2">Woody</h1>
       <div class="avatar"></div>
@@ -12,8 +13,16 @@
         <GithubFilled class="zpw-mx-1" style="color:#fff;font-size:20px;" />
       </div>
     </div>
-    <div class="menu">
-
+    <!-- 菜单 -->
+    <div class="menu zpw-mt-2">
+      <ul>
+        <li
+          v-for="(menu, index) in menus"
+          :key="index"
+          class="zpw-py-1 zpw-pl-2">
+          <span>{{ menu.label }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
@@ -36,6 +45,19 @@ export default defineComponent({
       type: Boolean,
       default: true
     }
+  },
+  data () {
+    return {
+      menus: [{
+        label: '首页',
+        link: '',
+        icon: ''
+      }, {
+        label: '留言',
+        link: '',
+        icon: ''
+      }]
+    }
   }
 })
 </script>
@@ -50,7 +72,6 @@ export default defineComponent({
   &.is-visible {
     box-shadow: 0 0 30px 0 rgba(27, 14, 14, 0.3);
   }
-
   .info {
     background-color: #393c3e;
 
@@ -70,6 +91,21 @@ export default defineComponent({
       width: 100%;
     }
   }
-
+  .menu {
+    ul {
+      li {
+        border-left: 2px solid transparent;
+        transition: all .3s ease-in-out;
+        font-size: 14px;
+        color: #b8c7ce;
+        &:hover {
+          border-left-color: #3c8dbc;
+          background-color: #312e2e;
+          color: #b6d5f0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 </style>

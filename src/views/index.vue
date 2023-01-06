@@ -3,27 +3,29 @@
     class="home-app"
     :class="{ slideInLeft: isMenuVisible, slideOutLeft: !isMenuVisible, 'animated faster': isAnimationEnabled }"
     @animationend="onAnimationEnd">
-    <base-head @onToggleMenu="onToggleMenu"></base-head>
     <base-side></base-side>
+    <base-head @onToggleMenu="onToggleMenu"></base-head>
+    <base-main></base-main>
     <base-foot></base-foot>
   </section>
 </template>
 <script>
 import { defineComponent, ref, computed } from 'vue'
 import { useStore } from 'vuex'
-import BaseHead from '../../components/base-head.vue'
-import BaseSide from '../../components/base-side.vue'
-import BaseFoot from '../../components/base-foot.vue'
+import BaseHead from '../components/base-head.vue'
+import BaseSide from '../components/base-side.vue'
+import BaseFoot from '../components/base-foot.vue'
+import BaseMain from '../components/base-main.vue'
 export default defineComponent({
   name: 'HomeIndex',
   components: {
     BaseHead,
     BaseSide,
-    BaseFoot
+    BaseFoot,
+    BaseMain
   },
   setup () {
     const store = useStore()
-    console.log(store, 'store')
     const isMenuVisible = computed(() => store.state.isMenuVisible)
     const isAnimationEnabled = ref(false)
     const onAnimationEnd = () => {
