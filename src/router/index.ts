@@ -3,11 +3,27 @@ import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '../views/index.vue'),
-    children: [{
-      path: '',
-      component: () => import(/* webpackChunkName: "index" */ '../views/article-index.vue')
-    }]
+    component: () => import(/* webpackChunkName: "home" */ '../App.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import(/* webpackChunkName: "index" */ '../views/index.vue')
+      },
+      {
+        path: 'article',
+        component: () => import(/* webpackChunkName: "index" */ '../views/articleDetail/index.vue')
+      },
+      {
+        path: 'backend',
+        component: () => import(/* webpackChunkName: "index" */ '../backend/index.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import(/* webpackChunkName: "index" */ '../backend/write.vue')
+          }
+        ]
+      }
+    ]
   }
 ]
 

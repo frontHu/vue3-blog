@@ -21,6 +21,11 @@ export default defineComponent({
 html,body {
   width: 100%;
   height: 100%;
+  color: rgba(0,0,0,.85);
+  font-size: 16px !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 #app {
   width: 100%;

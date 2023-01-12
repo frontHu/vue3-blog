@@ -7,13 +7,13 @@
       </div>
     </div>
     <div class="article-item-title zpw-text-gray-70 zpw-font-bold zpw-text-20  zpw-mb-1/2">
-      花1块钱让你的网站支持 ChatGPT
+      {{ article.title }}
     </div>
     <div class="article-item-img">
-      <img :src="require('../../assets/test.png')" alt="">
+      <img :src="article.poster" alt="">
     </div>
     <div class="article-item-desc zpw-mt-2 zpw-mb-1 zpw-text-16">
-      聊聊一个使用频率还挺高的组件——全屏组件，顺便了解下什么是 Headless 组件，并尝试动手将一个普通组件改造成 Headless 组件。
+      {{ article.abstract }}
     </div>
     <div class="article-more">
       <a-button type="primary" ghost>阅读全文</a-button>
@@ -21,11 +21,27 @@
   </section>
 </template>
 <script>
-import { defineComponent } from 'vue'
 import { FieldTimeOutlined } from '@ant-design/icons-vue'
+import { defineComponent, computed, reactive } from 'vue'
 export default defineComponent({
+  name: 'ArticleCard',
   components: {
     FieldTimeOutlined
+  },
+  props: {
+    article: Object
+  },
+  setup (props) {
+    const currentArticle = reactive({})
+    // computed(() => {
+    //   currentArticle.value = { ...props.article }
+    //   return currentArticle
+    // })
+    currentArticle.value = { ...props.article }
+    console.log(currentArticle, ' currentArticle')
+    return {
+      currentArticle
+    }
   }
 })
 </script>

@@ -1,50 +1,50 @@
 <template>
-  <section
-    class="home-app"
-    :class="{ slideInLeft: isMenuVisible, slideOutLeft: !isMenuVisible, 'animated faster': isAnimationEnabled }"
-    @animationend="onAnimationEnd">
-    <base-side></base-side>
-    <base-head @onToggleMenu="onToggleMenu"></base-head>
-    <base-main></base-main>
-    <base-foot></base-foot>
-  </section>
+  <base-main>
+    <a-skeleton :loading="false" active :paragraph="{ rows: 12 }">
+      <template v-if="true">
+        <section class="article-list">
+          <article-card
+            v-for="(item, index) in articles"
+            :key="index"
+            :article="item">
+          </article-card>
+        </section>
+      </template>
+      <template v-else>
+        <a-empty />
+      </template>
+    </a-skeleton>
+  </base-main>
 </template>
 <script>
-import { defineComponent, ref, computed } from 'vue'
-import { useStore } from 'vuex'
-import BaseHead from '../components/base-head.vue'
-import BaseSide from '../components/base-side.vue'
-import BaseFoot from '../components/base-foot.vue'
+import { defineComponent, ref } from 'vue'
 import BaseMain from '../components/base-main.vue'
+import ArticleCard from '../components/articles/article-card.vue'
+import { useStore } from 'vuex'
+
 export default defineComponent({
   name: 'HomeIndex',
   components: {
-    BaseHead,
-    BaseSide,
-    BaseFoot,
-    BaseMain
+    BaseMain,
+    ArticleCard
   },
   setup () {
     const store = useStore()
-    const isMenuVisible = computed(() => store.state.isMenuVisible)
-    const isAnimationEnabled = ref(false)
-    const onAnimationEnd = () => {
-      if (isMenuVisible.value === false) {
-        isAnimationEnabled.value = false
-      }
+
+    const articles = ref([])
+    const init = async () => {
+      const res = await store.dispatch('getArticlesAction', {
+        query: {
+          pageNo: 0
+        }
+      })
+      articles.value = res
     }
-    const onToggleMenu = () => {
-      if (isAnimationEnabled.value === false) {
-        isAnimationEnabled.value = true
-      }
-      store.commit('SET_IS_MENU_VISIBLE', !isMenuVisible.value)
-      console.log('onToggleMenu')
-    }
+
+    init()
+
     return {
-      isMenuVisible,
-      isAnimationEnabled,
-      onAnimationEnd,
-      onToggleMenu
+      articles
     }
   }
 })

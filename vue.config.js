@@ -15,5 +15,17 @@ module.exports = defineConfig({
       args[0].title = process.env.VUE_APP_TITLE
       return args
     })
+  },
+  // https://github.com/chimurai/http-proxy-middleware#proxycontext-config
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:7001',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   }
 })
