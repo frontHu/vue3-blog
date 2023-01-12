@@ -50,6 +50,8 @@
 </template>
 
 <script lang="ts">
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import marked from 'marked'
 // hljs 按需加载
 import hljs from 'highlight.js/lib/core'
@@ -61,7 +63,11 @@ import json from 'highlight.js/lib/languages/json'
 import plaintext from 'highlight.js/lib/languages/plaintext'
 // 皮肤
 import 'highlight.js/styles/atom-one-dark.css'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import DOMPurify from 'dompurify'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { throttle } from 'lodash-es'
 import { Form, Input, message, Modal, Radio, Spin } from 'ant-design-vue'
 import { computed, defineComponent, reactive, ref } from 'vue'
@@ -89,17 +95,17 @@ export default defineComponent({
     })
     const initMarked = () => {
       const renderer = new marked.Renderer()
-      renderer.link = function customLink (href, title, text) {
+      renderer.link = function customLink (href:any, title:any, text:any) {
         return `<a class="link" href="${href}" target="_blank" title="${text}">${text}</a>`
       }
-      renderer.image = function customImage (href, title, text) {
+      renderer.image = function customImage (href:any, title:any, text:any) {
         return (
           `<a class="img-wrapper" href="${href}" target="_blank" title="${text}">` + `<img src="${href}" alt="${text}">` + '</a>'
         )
       }
       marked.setOptions({
         renderer,
-        highlight: function (code, lang) {
+        highlight: function (code:any, lang:any) {
           const language = hljs.getLanguage(lang) ? lang : 'plaintext'
           return hljs.highlight(code, { language }).value
         },

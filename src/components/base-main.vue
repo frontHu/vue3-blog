@@ -5,7 +5,7 @@
     @animationend="onAnimationEnd">
     <base-head @onToggleMenu="onToggleMenu"></base-head>
     <base-side></base-side>
-    <main class="base-layout zpw-py-3">
+    <main class="base-layout zpw-py-3 base-layout__main">
       <slot />
     </main>
     <base-foot></base-foot>
@@ -54,9 +54,27 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   .base-layout {
-    width: 800px;
     height: 100%;
     margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+    .base-layout__main {
+        width: 800px;
+    }
+}
+@media screen and (max-width: 1200px) {
+  .base-layout__main{
+      width: 80%;
+      margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .base-layout__main{
+      width: 95%;
+      margin: 0 auto;
   }
 }
 </style>

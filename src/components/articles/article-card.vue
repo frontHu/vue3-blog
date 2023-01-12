@@ -10,7 +10,7 @@
       {{ article.title }}
     </div>
     <div class="article-item-img">
-      <img :src="article.poster" alt="">
+      <img :src="article.poster" alt="" class="zpw-w-full">
     </div>
     <div class="article-item-desc zpw-mt-2 zpw-mb-1 zpw-text-16">
       {{ article.abstract }}
@@ -48,11 +48,40 @@ export default defineComponent({
 <style lang="scss">
 .article-item {
   .article-item-img {
+    overflow: hidden;
     box-shadow: 0 0 6px rgb(109 43 43 / 10%), 10px 10px 100px rgb(112 100 212 / 24%);
     &:hover {
       transform: scale(1.01);
       transition: transform .2s ease-in-out;
       cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .article-item-img {
+    img {
+      height: 450px;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .article-item-img {
+    img {
+      height: 450px;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .article-item-img {
+    img {
+      height: 300px;
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .article-item-img {
+    img {
+      height: 200px;
     }
   }
 }

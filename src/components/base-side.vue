@@ -2,15 +2,22 @@
   <section class="base-side" :class="{ 'is-visible': isVisible }">
     <!-- 信息 -->
     <div class="info zpw-flex zpw-flex-col zpw-items-center zpw-px-1 zpw-py-2">
-      <h1 class="name zpw-text-white zpw-mb-2">Woody</h1>
-      <div class="avatar"></div>
+      <h1 class="name zpw-text-white zpw-mb-2">Hu</h1>
+      <div class="avatar">
+        <img :src="require('../assets/avatar.jpg')" alt="">
+      </div>
       <div class="base zpw-flex zpw-items-center zpw-mt-2 zpw-text-white">
         <environment-outlined />
         <span class="zpw-ml-1">安徽 合肥</span>
       </div>
       <div class="link zpw-flex zpw-justify-center zpw-mt-2">
-        <WechatOutlined class="zpw-mx-1" style="color:#fff;font-size:20px;"/>
-        <GithubFilled class="zpw-mx-1" style="color:#fff;font-size:20px;" />
+        <a>
+          <WechatOutlined class="zpw-mx-1" style="color:#fff;font-size:20px;"/>
+        </a>
+        <a href="https://github.com/frontHu">
+          <GithubFilled class="zpw-mx-1" style="color:#fff;font-size:20px;" />
+        </a>
+        <a></a>
       </div>
     </div>
     <!-- 菜单 -->
@@ -86,6 +93,11 @@ export default defineComponent({
       height: 80px;
       border-radius: 50%;
       background-color: #fff;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
     }
     .link {
       width: 100%;
