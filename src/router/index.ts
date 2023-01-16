@@ -23,6 +23,10 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import(/* webpackChunkName: "index" */ '../backend/write.vue')
           }
         ]
+      },
+      {
+        path: 'web',
+        component: () => import(/* webpackChunkName: "index" */ '../views/web/index.vue')
       }
     ]
   }

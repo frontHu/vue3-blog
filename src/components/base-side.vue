@@ -17,7 +17,6 @@
         <a href="https://github.com/frontHu">
           <GithubFilled class="zpw-mx-1" style="color:#fff;font-size:20px;" />
         </a>
-        <a></a>
       </div>
     </div>
     <!-- 菜单 -->
@@ -25,9 +24,12 @@
       <ul>
         <li
           v-for="(menu, index) in menus"
-          :key="index"
-          class="zpw-py-1 zpw-pl-2">
-          <span>{{ menu.label }}</span>
+          :key="index">
+          <router-link
+            class="zpw-py-1 zpw-pl-2"
+            :to="menu.link">
+            <span>{{ menu.label }}</span>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -57,11 +59,19 @@ export default defineComponent({
     return {
       menus: [{
         label: '首页',
-        link: '',
+        link: '/',
         icon: ''
       }, {
         label: '留言',
-        link: '',
+        link: '/comment',
+        icon: ''
+      }, {
+        label: '前端计划',
+        link: '/fe-plan',
+        icon: ''
+      }, {
+        label: '网站建设',
+        link: '/web',
         icon: ''
       }]
     }
@@ -105,7 +115,8 @@ export default defineComponent({
   }
   .menu {
     ul {
-      li {
+      li a {
+        display: block;
         border-left: 2px solid transparent;
         transition: all .3s ease-in-out;
         font-size: 14px;
