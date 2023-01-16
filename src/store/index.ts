@@ -28,6 +28,10 @@ const store = createStore({
     // 获取文章列表
     getArticlesAction ({ commit }, payload) {
       return ARTICLE_REQUEST.getArticleList(payload.query)
+    },
+    // 获取文章详情
+    getArticleDetails ({ commit }, payload) {
+      return ARTICLE_REQUEST.getArticleDetail(payload.query)
     }
   }
 })

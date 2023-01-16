@@ -18,9 +18,7 @@ enum InnerCode {
 // 返回状态拦截
 api.interceptors.response.use(
   (response) => {
-    console.log(response, 'response')
     const res = response.data
-    console.log(res, 'rrr')
     return res
   },
   (error) => {

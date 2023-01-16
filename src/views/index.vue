@@ -30,7 +30,6 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
-
     const articles = ref([])
     const init = async () => {
       const res = await store.dispatch('getArticlesAction', {

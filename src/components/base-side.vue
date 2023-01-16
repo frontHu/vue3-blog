@@ -2,7 +2,7 @@
   <section class="base-side" :class="{ 'is-visible': isVisible }">
     <!-- 信息 -->
     <div class="info zpw-flex zpw-flex-col zpw-items-center zpw-px-1 zpw-py-2">
-      <h1 class="name zpw-text-white zpw-mb-2">Hu</h1>
+      <h1 class="name zpw-text-white zpw-mb-2">Woody Hu</h1>
       <div class="avatar">
         <img :src="require('../assets/avatar.jpg')" alt="">
       </div>

@@ -16,13 +16,21 @@
       {{ article.abstract }}
     </div>
     <div class="article-more">
-      <a-button type="primary" ghost>阅读全文</a-button>
+      <a-button
+        type="primary"
+        ghost
+        @click="$router.push({
+          name: 'article',
+          params: {
+            id: article.id
+          }
+        })">阅读全文</a-button>
     </div>
   </section>
 </template>
 <script>
 import { FieldTimeOutlined } from '@ant-design/icons-vue'
-import { defineComponent, computed, reactive } from 'vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ArticleCard',
   components: {
@@ -30,19 +38,8 @@ export default defineComponent({
   },
   props: {
     article: Object
-  },
-  setup (props) {
-    const currentArticle = reactive({})
-    // computed(() => {
-    //   currentArticle.value = { ...props.article }
-    //   return currentArticle
-    // })
-    currentArticle.value = { ...props.article }
-    console.log(currentArticle, ' currentArticle')
-    return {
-      currentArticle
-    }
   }
+  // setup (props) { }
 })
 </script>
 <style lang="scss">
